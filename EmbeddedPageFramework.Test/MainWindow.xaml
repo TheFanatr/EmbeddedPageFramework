@@ -1,0 +1,38 @@
+﻿<Window x:Class="EmbeddedPageFramework.Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmbeddedPageFramework.Test"
+        xmlns:PageFramework="clr-namespace:EmbeddedPageFramework;assembly=EmbeddedPageFramework"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <PageFramework:EmbeddedPageContainer Grid.Row="0" Name="PageContainer">
+            <PageFramework:EmbeddedPage>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="Start Page"/>
+                    <Button Grid.Row="1" Content="Useless Button"/>
+                </Grid>
+            </PageFramework:EmbeddedPage>
+        </PageFramework:EmbeddedPageContainer>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Left" Padding="10" Name="ReverseQueueButton"/>
+            <Button Content="Dismiss" Padding="10" Name="DismissUnqueuedPageButton" Grid.Column="1"/>
+            <Button Content="Right" Padding="10" Name="AdvanceQueueButton" Grid.Column="2"/>
+        </Grid>
+    </Grid>
+</Window>
