@@ -30,8 +30,10 @@ namespace EmbeddedPageFramework
             {
                 if (EnableKeyboardShortcutsValue != value)
                 {
-                    if (value) Window.GetWindow(this).KeyDown += HandleShortcuts;
-                    else Window.GetWindow(this).KeyDown -= HandleShortcuts;
+                    if (value)
+                        Window.GetWindow(this).KeyDown += HandleShortcuts;
+                    else
+                        Window.GetWindow(this).KeyDown -= HandleShortcuts;
                     EnableKeyboardShortcutsValue = value;
                 }
             }
@@ -46,8 +48,10 @@ namespace EmbeddedPageFramework
             {
                 if (EnableKeyboardShortcutsToggleShortcutValue != value)
                 {
-                    if (value) Window.GetWindow(this).KeyDown += HandleShortcutToggle;
-                    else Window.GetWindow(this).KeyDown -= HandleShortcutToggle;
+                    if (value)
+                        Window.GetWindow(this).KeyDown += HandleShortcutToggle;
+                    else
+                        Window.GetWindow(this).KeyDown -= HandleShortcutToggle;
                     EnableKeyboardShortcutsToggleShortcutValue = value;
                 }
             }
@@ -59,14 +63,19 @@ namespace EmbeddedPageFramework
         {
             if (e.KeyboardDevice.IsKeyDown(Key.LeftCtrl))
             {
-                if (e.KeyboardDevice.IsKeyDown(Key.Left)) ReverseQueue();
-                if (e.KeyboardDevice.IsKeyDown(Key.Right)) AdvanceQueue();
-                if (e.KeyboardDevice.IsKeyDown(Key.Enter)) DismissUnqueuedPage();
+                if (e.KeyboardDevice.IsKeyDown(Key.Left))
+                    ReverseQueue();
+                if (e.KeyboardDevice.IsKeyDown(Key.Right))
+                    AdvanceQueue();
+                if (e.KeyboardDevice.IsKeyDown(Key.Enter))
+                    DismissUnqueuedPage();
             }
             else if (e.KeyboardDevice.IsKeyDown(Key.LeftAlt))
             {
-                if (e.KeyboardDevice.IsKeyDown(Key.Left)) ReverseHistory();
-                if (e.KeyboardDevice.IsKeyDown(Key.Right)) AdvanceHistory();
+                if (e.KeyboardDevice.IsKeyDown(Key.Left))
+                    ReverseHistory();
+                if (e.KeyboardDevice.IsKeyDown(Key.Right))
+                    AdvanceHistory();
             }
         }
 
@@ -74,7 +83,7 @@ namespace EmbeddedPageFramework
         {
             if (!DesignerProperties.GetIsInDesignMode(this))
             {
-                InitializeComponent();
+                //InitializeComponent();
                 Loaded += (s, e) =>
                 {
                     EnableKeyboardShortcuts = true;
@@ -92,9 +101,11 @@ namespace EmbeddedPageFramework
             get => Content as EmbeddedPage;
             set
             {
-                if (!PageQueue.Exists(x => x.Identifier == value.Identifier)) StoredPage = LoadedPage;
+                if (!PageQueue.Exists(x => x.Identifier == value.Identifier))
+                    StoredPage = LoadedPage;
                 Content = value;
-                if (PageHistoryIndex != PageHistory.Count - 1) PageHistory.RemoveRange(PageHistoryIndex + 1, PageHistory.Count - 1 - PageHistoryIndex);
+                if (PageHistoryIndex != PageHistory.Count - 1)
+                    PageHistory.RemoveRange(PageHistoryIndex + 1, PageHistory.Count - 1 - PageHistoryIndex);
                 PageHistoryIndexValue++;
                 PageHistory.Add(value);
             }
@@ -116,11 +127,14 @@ namespace EmbeddedPageFramework
                 if (StoredPage != null && QueuedStoredPage != null)
                 {
                     var ModifiedPageQueueIndex = PageQueue.FindIndex(x => x.Identifier == StoredPage.Identifier) + 1;
-                    if (ModifiedPageQueueIndex <= PageQueue.Count - 1) PageQueueIndex = ModifiedPageQueueIndex;
+                    if (ModifiedPageQueueIndex <= PageQueue.Count - 1)
+                        PageQueueIndex = ModifiedPageQueueIndex;
                 }
-                else PageQueueIndex = 0;
+                else
+                    PageQueueIndex = 0;
             }
-            else if (PageQueue.Count > 1 && PageQueueIndex < PageQueue.Count - 1) PageQueueIndex++;
+            else if (PageQueue.Count > 1 && PageQueueIndex < PageQueue.Count - 1)
+                PageQueueIndex++;
         }
 
         public void ReverseQueue()
@@ -131,11 +145,14 @@ namespace EmbeddedPageFramework
                 if (StoredPage != null && QueuedStoredPage != null)
                 {
                     var ModifiedPageQueueIndex = PageQueue.FindIndex(x => x.Identifier == StoredPage.Identifier) - 1;
-                    if (ModifiedPageQueueIndex >= 0) PageQueueIndex = ModifiedPageQueueIndex;
+                    if (ModifiedPageQueueIndex >= 0)
+                        PageQueueIndex = ModifiedPageQueueIndex;
                 }
-                else PageQueueIndex = PageQueue.Count - 1;
+                else
+                    PageQueueIndex = PageQueue.Count - 1;
             }
-            else if (PageQueue.Count > 1 && PageQueueIndex > 0) PageQueueIndex--;
+            else if (PageQueue.Count > 1 && PageQueueIndex > 0)
+                PageQueueIndex--;
         }
 
         public void DismissUnqueuedPage()
@@ -146,9 +163,11 @@ namespace EmbeddedPageFramework
                 if (StoredPage != null && QueuedStoredPage != null)
                 {
                     var ModifiedPageQueueIndex = PageQueue.FindIndex(x => x.Identifier == StoredPage.Identifier);
-                    if (ModifiedPageQueueIndex <= PageQueue.Count - 1) PageQueueIndex = ModifiedPageQueueIndex;
+                    if (ModifiedPageQueueIndex <= PageQueue.Count - 1)
+                        PageQueueIndex = ModifiedPageQueueIndex;
                 }
-                else PageQueueIndex = 0;
+                else
+                    PageQueueIndex = 0;
             }
         }
 
@@ -157,7 +176,8 @@ namespace EmbeddedPageFramework
             get => Content as EmbeddedPage;
             set
             {
-                if (!PageQueue.Exists(x => x.Identifier == value.Identifier)) StoredPage = LoadedHistoryPage;
+                if (!PageQueue.Exists(x => x.Identifier == value.Identifier))
+                    StoredPage = LoadedHistoryPage;
                 Content = value;
             }
         }

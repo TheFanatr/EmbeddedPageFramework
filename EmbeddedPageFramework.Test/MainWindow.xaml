@@ -20,7 +20,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Content="Start Page"/>
-                    <Button Grid.Row="1" Content="Useless Button"/>
+                    <Button Grid.Row="1" Content="Useless Button" Name="Chicken"/>
                 </Grid>
             </PageFramework:EmbeddedPage>
             <PageFramework:EmbeddedPageContainer.PageQueue>

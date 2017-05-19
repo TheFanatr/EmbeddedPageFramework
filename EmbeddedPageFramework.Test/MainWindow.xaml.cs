@@ -24,6 +24,8 @@ namespace EmbeddedPageFramework.Test
         {
             InitializeComponent();
 
+            Chicken.Click += (s, e) => MessageBox.Show("He likes trains.");
+
             Button ShowModalDialogButton = new Button
             {
                 VerticalAlignment = VerticalAlignment.Center,

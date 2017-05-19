@@ -54,16 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmbeddedPage.cs" />
-    <Compile Include="EmbeddedPageContainer.xaml.cs">
-      <DependentUpon>EmbeddedPageContainer.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="EmbeddedPageContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="EmbeddedPageContainer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
