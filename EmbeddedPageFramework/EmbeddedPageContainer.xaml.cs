@@ -37,18 +37,18 @@ namespace EmbeddedPageFramework
             }
         }
 
-        static bool EnableKeyboardShortcutToggleShortcutValue;
+        static bool EnableKeyboardShortcutsToggleShortcutValue;
 
-        public bool EnableKeyboardShortcutToggleShortcut
+        public bool EnableKeyboardShortcutsToggleShortcut
         {
-            get => EnableKeyboardShortcutToggleShortcutValue;
+            get => EnableKeyboardShortcutsToggleShortcutValue;
             set
             {
-                if (EnableKeyboardShortcutToggleShortcutValue != value)
+                if (EnableKeyboardShortcutsToggleShortcutValue != value)
                 {
                     if (value) Window.GetWindow(this).KeyDown += HandleShortcutToggle;
                     else Window.GetWindow(this).KeyDown -= HandleShortcutToggle;
-                    EnableKeyboardShortcutToggleShortcutValue = value;
+                    EnableKeyboardShortcutsToggleShortcutValue = value;
                 }
             }
         }
@@ -78,14 +78,14 @@ namespace EmbeddedPageFramework
                 Loaded += (s, e) =>
                 {
                     EnableKeyboardShortcuts = true;
-                    EnableKeyboardShortcutToggleShortcut = true;
+                    EnableKeyboardShortcutsToggleShortcut = true;
                     LoadedPage = LoadedPage; // DO NOT DELETE
                     StoredPage = LoadedPage;
                 };
             }
         }
 
-        private EmbeddedPage StoredPage;
+        EmbeddedPage StoredPage;
 
         public EmbeddedPage LoadedPage
         {
@@ -100,7 +100,7 @@ namespace EmbeddedPageFramework
             }
         }
 
-        public List<EmbeddedPage> PageQueue = new List<EmbeddedPage>();
+        public List<EmbeddedPage> PageQueue { get; set; } = new List<EmbeddedPage>();
 
         public int PageQueueIndex
         {

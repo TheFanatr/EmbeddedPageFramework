@@ -23,6 +23,17 @@
                     <Button Grid.Row="1" Content="Useless Button"/>
                 </Grid>
             </PageFramework:EmbeddedPage>
+            <PageFramework:EmbeddedPageContainer.PageQueue>
+                <PageFramework:EmbeddedPage>
+                    <Button Content="XAML Added this button (0)"/>
+                </PageFramework:EmbeddedPage>
+                <PageFramework:EmbeddedPage>
+                    <Button Content="XAML Added this button (1)"/>
+                </PageFramework:EmbeddedPage>
+                <PageFramework:EmbeddedPage>
+                    <Button Content="XAML Added this button (2)"/>
+                </PageFramework:EmbeddedPage>
+            </PageFramework:EmbeddedPageContainer.PageQueue>
         </PageFramework:EmbeddedPageContainer>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
