@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,7 +84,6 @@ namespace EmbeddedPageFramework
         {
             if (!DesignerProperties.GetIsInDesignMode(this))
             {
-                //InitializeComponent();
                 Loaded += (s, e) =>
                 {
                     EnableKeyboardShortcuts = true;
@@ -106,8 +106,8 @@ namespace EmbeddedPageFramework
                 Content = value;
                 if (PageHistoryIndex != PageHistory.Count - 1)
                     PageHistory.RemoveRange(PageHistoryIndex + 1, PageHistory.Count - 1 - PageHistoryIndex);
-                PageHistoryIndexValue++;
                 PageHistory.Add(value);
+                PageHistoryIndex++;
             }
         }
 

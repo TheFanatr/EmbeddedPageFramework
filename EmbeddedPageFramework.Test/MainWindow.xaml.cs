@@ -20,8 +20,6 @@ namespace EmbeddedPageFramework.Test
     /// </summary>
     public partial class MainWindow : Window
     {
-        // TODO: Fix bug where navigating off of a modal popup after backing into it through in the history can cause the wrong page to show.
-
         public MainWindow()
         {
             InitializeComponent();
